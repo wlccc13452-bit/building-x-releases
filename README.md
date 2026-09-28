@@ -17,22 +17,8 @@ can publish Windows install packages via GitHub Releases.
 - `epad-report-preview-*.vsix`
 - `SHA256SUMS*`
 
-**Never** commit or upload:
-
-- Product source trees, sdists, `*.tar.gz` source archives
-- Register2026 (not published anywhere on GitHub)
-- Python / Nuitka / build caches
-
 `main` on this repo should stay a thin README (this file). Do **not** push
 installer binaries into git history — put them on **Releases** only.
-
-## About “Source code” on the Release page
-
-GitHub **always** shows *Source code (zip)* / *Source code (tar.gz)* on every
-Release. Those links download **this** public repo at the release tag (normally
-just this README) — **not** private `building-x` product source.
-
-Ignore those links. Download only the named installer assets listed above.
 
 ## How packages arrive
 
