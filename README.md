@@ -1,73 +1,55 @@
 # building-x-releases
 
-Public **GitHub Releases** bucket for install packages (no source trees).
-
-Private product repos keep source private; their GitHub Actions workflows upload
-binaries / installers here via `gh release` and secret `RELEASES_REPO_TOKEN`.
+Public **installer bucket only**. This repository exists so private `building-x`
+can publish Windows install packages via GitHub Releases.
 
 | | |
 |--|--|
-| GitHub | https://github.com/wlccc13452-bit/building-x-releases |
-| Releases | https://github.com/wlccc13452-bit/building-x-releases/releases |
-| Checkout | `building-x/building-x-releases/` (git submodule of private `building-x`) |
+| Releases (installers) | https://github.com/wlccc13452-bit/building-x-releases/releases |
+| Private source | https://github.com/wlccc13452-bit/building-x (private — not here) |
 
-Do **not** commit large binaries to `main` unless intentional — prefer
-[Releases](https://github.com/wlccc13452-bit/building-x-releases/releases).
+## What belongs here
 
----
+**Only** GitHub Release **assets** (uploaded by CI `gh release`):
 
-## Publisher projects
+- `Epad-*-win64.zip` / `Epad-*-win64-Setup.exe`
+- `ReportOrchestrator-*-win64.zip` / `ReportOrchestrator-*-win64-Setup.exe`
+- `ReportViewer-*-win64.zip` (when built)
+- `epad-report-preview-*.vsix`
+- `SHA256SUMS*`
 
-Local clones (examples):
+**Never** commit or upload:
 
-| Project | Path |
-|---------|------|
-| building-x | `ifc_projects/building-x` (or vinchi-hub submodule) |
-| vizion_ai | `ifc_projects/vizion_ai` |
-| vinchi-hub | `D:\playgrounds\vinchi-hub` |
+- Product source trees, sdists, `*.tar.gz` source archives
+- Register2026 (not published anywhere on GitHub)
+- Python / Nuitka / build caches
 
-Each publisher repo needs Actions secret **`RELEASES_REPO_TOKEN`** — a PAT with
-`contents:write` on this public repo.
+`main` on this repo should stay a thin README (this file). Do **not** push
+installer binaries into git history — put them on **Releases** only.
 
----
+## About “Source code” on the Release page
 
-## What is / is not published
+GitHub **always** shows *Source code (zip)* / *Source code (tar.gz)* on every
+Release. Those links download **this** public repo at the release tag (normally
+just this README) — **not** private `building-x` product source.
 
-**Published here:** install-only artifacts (ZIPs, VSIX, wheels, NSIS installers).
+Ignore those links. Download only the named installer assets listed above.
 
-**Not published here:**
-
-- Product source trees / sdists (`*.tar.gz`)
-- `building-x` **Register2026** installer (stays on private `building-x` Releases)
-- Pure `vizion-sdk` / `vizion-runtime` source wheels (replaced by Nuitka binaries)
-
----
-
-## How publish works
+## How packages arrive
 
 ```text
-private repo CI (Windows / Linux as needed)
-  → build install packages
+private building-x CI
+  → build installers under epad/releases/
   → gh release create|upload --repo wlccc13452-bit/building-x-releases
 ```
 
-Details live in each source repo (not duplicated here):
+Publisher setup and allow-list: private repo `building-x/.github/RELEASES.md`.
 
-- building-x: `.github/RELEASES.md`
-- vizion_ai: `README.md` → “Build installation packages” / Package workflow
-- vinchi-hub: `.github/workflows/vinchi-hub-protected-release.yml`
-
----
-
-## Local (submodule)
+## Local submodule (optional)
 
 ```bat
+cd building-x
+git submodule update --init building-x-releases
 cd building-x-releases
 git pull
-```
-
-Parent (`building-x`):
-
-```bat
-git submodule update --init building-x-releases
 ```
