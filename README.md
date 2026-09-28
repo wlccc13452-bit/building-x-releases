@@ -6,7 +6,6 @@ can publish Windows install packages via GitHub Releases.
 | | |
 |--|--|
 | Releases (installers) | https://github.com/wlccc13452-bit/building-x-releases/releases |
-| Private source | https://github.com/wlccc13452-bit/building-x (private — not here) |
 
 ## What belongs here
 
