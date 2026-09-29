@@ -15,9 +15,8 @@ Public Windows install packages — download from
 ### Install
 
 1. Download the latest assets from [Releases](https://github.com/wlccc13452-bit/building-x-releases/releases).
-2. Install **[Edge WebView2 Runtime](https://developer.microsoft.com/microsoft-edge/webview2/)** (required for EPAD IFClite viewer and Report Orchestrator).
-3. Prefer `*-Setup.exe` (Inno installer). For ZIP: extract and run the `.exe` from the folder.
-4. Optional: install `epad-report-preview-*.vsix` via VS Code / Cursor → Extensions → Install from VSIX.
+2. Prefer `*-Setup.exe` (Inno installer). For ZIP: extract and run the `.exe` from the folder.
+3. Optional: install `epad-report-preview-*.vsix` via VS Code / Cursor → Extensions → Install from VSIX.
 
 ### Verify
 
@@ -36,9 +35,8 @@ Public Windows install packages — download from
 ### Install
 
 1. Download Morph and Flow `*-Setup.exe` from [Releases](https://github.com/wlccc13452-bit/building-x-releases/releases) (or ZIP if you prefer a portable layout).
-2. Install **[Edge WebView2 Runtime](https://developer.microsoft.com/microsoft-edge/webview2/)**.
-3. Run both Setup installers. Default Flow path: `%LOCALAPPDATA%\Programs\VinchiFlow\VinchiFlow.exe`.
-4. Optional: install Sync Hub the same way. Skip legacy `Vinchi Hub-*.exe` unless you need the old Electron shell.
+2. Run both Setup installers. Default Flow path: `%LOCALAPPDATA%\Programs\VinchiFlow\VinchiFlow.exe`.
+3. Optional: install Sync Hub the same way. Skip legacy `Vinchi Hub-*.exe` unless you need the old Electron shell.
 
 ### Use Morph ↔ Flow
 
